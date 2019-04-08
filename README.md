@@ -1,24 +1,5 @@
-# README
+# Robofriends on Rails
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Robofriends is a React app from Andrei Neagoi's [Udemy course](https://www.udemy.com/the-complete-junior-to-senior-web-developer-roadmap).
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+I created a rails api for the React app to gain practice and understanding on how to create a "React On Rails" app.
