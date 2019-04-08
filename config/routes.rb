@@ -1,3 +1,5 @@
 Rails.application.routes.draw do
-  resources :robofriends, only: :index
+  scope '/api' do
+    resources :robofriends, only: :index
+  end
 end

@@ -1,0 +1,13 @@
+{
+  "name": "robofriends-api",
+  "license": "MIT",
+  "engines": {
+    "node": "11.13.0",
+    "yarn": "1.15.2"
+  },
+  "scripts": {
+    "build": "yarn --cwd robofriends install && yarn --cwd robofriends build",
+    "deploy": "cp -a robofriends/build/. public/",
+    "heroku-postbuild": "yarn build && yarn deploy"
+  }
+}
