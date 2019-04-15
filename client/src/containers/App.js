@@ -10,7 +10,8 @@ class App extends Component {
     super()
     this.state = {
       robots: [],
-      searchfield: ''
+      searchfield: '',
+      quote: {}
     }
   }
 
