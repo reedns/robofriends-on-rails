@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import SpeakButton from './SpeakButton';
-import Quote from './Quote';
+import SpeakButton from '../components/SpeakButton';
+import Quote from '../components/Quote';
 
 class Card extends Component {
   constructor(props) {
