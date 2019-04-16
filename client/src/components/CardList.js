@@ -1,9 +1,11 @@
 import React from 'react';
-import Card from '../containers/Card';
+import Card from './Card';
 
-const CardList = ({ robots }) => {
+const CardList = ({ robots, quotes }) => {
   const cardsArray = robots.map(robot => {
-    return <Card key={robot.id} robot={robot} />
+    const quoteObj = quotes.filter(q => { return q.id === robot.id });
+    const quote = quoteObj.length ? quoteObj[0].quote : ''
+    return <Card key={robot.id} robot={robot} quote={quote} />
   })
 
   return(
@@ -13,4 +15,4 @@ const CardList = ({ robots }) => {
   );
 }
 
-export default CardList
+export default CardList;

@@ -4,7 +4,7 @@ const Quote = ({ quote }) => {
   if (quote.length) {
     return(
       <div style={{maxWidth: 300}} className="tl pa1 bw1 br3 bg-washed-green">
-        <p>{quote[0].quote}</p>
+        <p>{quote}</p>
       </div>
     )
   }

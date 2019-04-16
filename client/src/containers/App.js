@@ -12,7 +12,7 @@ const mapStateToProps = (state) => {
     searchField: state.searchRobots.searchField,
     isPending: state.requestRobots.isPending,
     robots: state.requestRobots.robots,
-    error: state.requestRobots.error
+    quotes: state.toggleQuote.quotes,
   }
 }
 
@@ -25,12 +25,11 @@ const mapDispatchToProps = (dispatch) => {
 
 class App extends Component {
   componentDidMount() {
-    console.log(this.props)
     this.props.onRequestRobots();
   }
 
   render() {
-    const { searchField, onSearchChange, robots, isPending } = this.props;
+    const { searchField, onSearchChange, robots, isPending, quotes } = this.props;
     const filteredRobots = robots.filter(robot => {
       return robot.name.toLowerCase().includes(searchField.toLowerCase());
     });
@@ -42,7 +41,7 @@ class App extends Component {
           <SearchBox searchChange={onSearchChange}/>
           <Scroll>
             <ErrorBoundary>
-              <CardList robots={filteredRobots} />
+              <CardList robots={filteredRobots} quotes={quotes} />
             </ErrorBoundary>
           </Scroll>
         </div>
