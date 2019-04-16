@@ -1,30 +1,24 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import SpeakButton from '../components/SpeakButton';
 import Quote from '../components/Quote';
+import { toggleQuote } from '../actions'
+
+const mapStateToProps = (state, props) => {
+  return {
+    quotes: state.toggleQuote.quotes,
+    error: state.toggleQuote.error,
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return { onClick: (event) => dispatch(toggleQuote(event.target.getAttribute('id'))) }
+}
 
 class Card extends Component {
-  constructor(props) {
-    super(props)
-    this.state = { quote: '', displayText: false }
-    this.handleClick = this.handleClick.bind(this)
-  }
-
-  handleClick = (e) => {
-    e.preventDefault();
-    if (this.state.displayText) {
-      this.setState({ quote: '', displayText: false });
-    } else {
-      fetch(`/api/robofriends/${this.props.robot.id}/speech`)
-        .then(response => response.json())
-        .then(response =>
-          this.setState({ quote: response.quote, displayText: true })
-        );
-    }
-  }
-
   render() {
-    const { robot } = this.props
-    const { quote, displayText } = this.state
+    const { robot, quotes, onClick } = this.props;
+    const quote = quotes.filter(quote => { return quote.id === robot.id });
     return(
       <div className='bg-light-green tc dib br3 pa2 ma2 grow bw2 shadow-5'>
         <Quote quote={quote}/>
@@ -32,11 +26,11 @@ class Card extends Component {
         <div>
           <h2>{robot.name}</h2>
           <p>{robot.email}</p>
-          <SpeakButton id={robot.id} displayText={displayText} onClick={this.handleClick} />
+          <SpeakButton id={robot.id} hasQuote={quote.length} onClick={onClick} />
         </div>
       </div>
     );
   }
 }
 
-export default Card;
+export default connect(mapStateToProps, mapDispatchToProps)(Card);
