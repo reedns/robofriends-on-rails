@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import SpeakButton from './SpeakButton';
 import Quote from './Quote';
 

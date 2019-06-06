@@ -31,5 +31,10 @@ module RobofriendsApi
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
+
+    logger = ActiveSupport::Logger.new(STDOUT)
+    logger.formatter = config.log_formatter
+    config.log_tags = [:subdomain, :uuid]
+    config.logger = ActiveSupport::TaggedLogging.new(logger)
   end
 end
